@@ -1,6 +1,5 @@
 import React from 'react';
 import classes from './Person.css';
-import Radium from 'radium';
 
 const person = (props) => {
     return (
