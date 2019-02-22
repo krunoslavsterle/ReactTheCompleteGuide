@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import './App.css';
-import Radium, { StyleRoot } from 'radium';
 import Person from './Person/Person';
 
 class App extends Component {
@@ -66,11 +65,7 @@ class App extends Component {
             font: 'inherit',
             border: '1px solid blue',
             padding: '8px',
-            cursor: 'pointer',
-            ':hover': {
-                backgroundColor: 'lightgreen',
-                color: 'black'
-            }
+            cursor: 'pointer'
         };
 
         let persons = null;
@@ -88,11 +83,7 @@ class App extends Component {
                 </div>
             );
 
-            style.backgroundColor = 'red';
-            style['hover'] = {
-                backgroundColor: 'lightred',
-                color: 'black'
-            }
+            style.backgroundColor = 'red';          
         }
 
         const classes = [];
@@ -105,43 +96,39 @@ class App extends Component {
         }
 
         return (
-            <StyleRoot>
-                <div className="App">         
-                    <h1>Hi, I'm a React App</h1>   
-                    <p className={classes.join(' ')}>This is really working</p>
-                        <button 
-                            style={style}
-                            onClick={() => this.togglePersonsHandler()}>Switch Name</button>
-                        
-                        {/* { this.state.showPersons ? // This is one way of handling conditions, not the best way
-                            <div>
-                                <Person 
-                                    name={this.state.persons[0].name} 
-                                    age={this.state.persons[0].age}>
-                                </Person>
+            <div className="App">         
+                <h1>Hi, I'm a React App</h1>   
+                <p className={classes.join(' ')}>This is really working</p>
+                    <button 
+                        style={style}
+                        onClick={() => this.togglePersonsHandler()}>Switch Name</button>
+                    
+                    {/* { this.state.showPersons ? // This is one way of handling conditions, not the best way
+                        <div>
+                            <Person 
+                                name={this.state.persons[0].name} 
+                                age={this.state.persons[0].age}>
+                            </Person>
 
-                                <Person 
-                                    name={this.state.persons[1].name} 
-                                    age={this.state.persons[1].age}
-                                    click={this.switchNameHandler.bind(this, 'Kreso')}
-                                    changed={this.nameChangedHandler}>My Hobbies: Cycling
-                                </Person>
-                                
-                                <Person 
-                                    name={this.state.persons[2].name} 
-                                    age={this.state.persons[2].age}>
-                                </Person>
-                            </div> : null
-                        } */}
-                    {persons}
-                </div>
-            </StyleRoot>
-          
-            
+                            <Person 
+                                name={this.state.persons[1].name} 
+                                age={this.state.persons[1].age}
+                                click={this.switchNameHandler.bind(this, 'Kreso')}
+                                changed={this.nameChangedHandler}>My Hobbies: Cycling
+                            </Person>
+                            
+                            <Person 
+                                name={this.state.persons[2].name} 
+                                age={this.state.persons[2].age}>
+                            </Person>
+                        </div> : null
+                    } */}
+                {persons}
+            </div>
         );
 
         //return React.createElement('div', {className: 'App'}, React.createElement('h1', null, 'Hi, my name is Krunoslav'));
     }
 }
 
-export default Radium(App);
+export default App;
