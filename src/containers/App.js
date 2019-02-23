@@ -5,6 +5,11 @@ import Persons from '../components/Persons/Persons';
 import Cockpit from '../components/Cockpit/Cockpit';
 
 class App extends Component {
+    constructor(props) {
+        super(props);
+        console.log('[App.js] constructor');
+    }
+
     state = {
         persons: [
             { id: '1', name: 'Krunoslav', age: 29 },
@@ -13,6 +18,31 @@ class App extends Component {
         ],
         showPersons: false
     }
+
+    // This is lifecycle method (Update, static) that gets called after the constructor! User very rearly. 
+    static getDerivedStateFromProps(props, state) {
+        console.log('[App.js] getDerivedStateFromProps', props);
+        return state;
+    }
+
+    // This is lifecycle method (Create) that gets called after the 'render' method. It is most important method, use it for http request and similar.
+    componentDidMount() {
+        console.log('[App.js] componentDidMount');
+    }
+
+    shouldComponentUpdate(nextProps, nextState) {
+        console.log('[App.js] shouldComponentUpdate');
+        return true;
+    }
+
+    componentDidUpdate() {
+        console.log('[App.js] componentDidUpdate');
+    }
+
+    // Old lifecycle method (Create), rearly used.
+    // componentWillMount() {
+    //     console.log('[App.js] componentWillMount');
+    // }
 
     switchNameHandler = (newName) => {
         // this.state.persons[0].name = "Kruno"; DONT DO THIS!, CAN'T MUTATE STATE DIRECTLY.
@@ -59,7 +89,11 @@ class App extends Component {
         this.setState({persons: persons});
     }
 
+    // This is lifecycle method (Update) that gets called after the 'getDerivedStateFromProps'. It is use for rendering and code in it should be only for that.
+    // NOTE: If this method contains other components, these components lifecycle methods will be called next, and then it will continue to execute lifecycle method in this component
+    // NOTE: When this method is called it doesnt have to update the real DOM, it will update the virtual DOM and then compare it with the real DOM to se if there is something to update.
     render() {
+        console.log('[App.js] render')
         let persons = null;
 
         if (this.state.showPersons) {
