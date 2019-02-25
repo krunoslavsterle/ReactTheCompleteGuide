@@ -1,8 +1,8 @@
-import React, { Component } from 'react';
+import React, { PureComponent } from 'react';
 import Person from './Person/Person';
 
 // React lifecycle diagram: http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
-class Persons extends Component {
+class Persons extends PureComponent {
     
     // static getDerivedStateFromProps(props, state) {
     //     console.log('[Persons.js] getDerivedStateFromProps');
@@ -16,16 +16,18 @@ class Persons extends Component {
 
 
 
-    shouldComponentUpdate(nextProps, nextState) {
-        console.log('[Persons.js] shouldComponentUpdate');
+    // shouldComponentUpdate(nextProps, nextState) {
+    //     console.log('[Persons.js] shouldComponentUpdate');
         
-        // This is optimization, if persons has not changed this component doesn't need to re-render.
-        if (nextProps.persons !== this.props.persons) {
-            return true;
-        } else {
-            return false;
-        }
-    }
+    //     // This is optimization, if persons has not changed this component doesn't need to re-render.
+    //     if (nextProps.persons !== this.props.persons || 
+    //         nextProps.changed !== this.props.changed || 
+    //         nextProps.clicked !== this.props.clicked) {
+    //         return true;
+    //     } else {
+    //         return false;
+    //     }
+    // }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
         console.log('[Persons.js] getSnapshotBeforeUpdate');
