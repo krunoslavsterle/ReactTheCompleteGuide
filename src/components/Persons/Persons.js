@@ -18,7 +18,13 @@ class Persons extends Component {
 
     shouldComponentUpdate(nextProps, nextState) {
         console.log('[Persons.js] shouldComponentUpdate');
-        return true; // Return true if react should continue with the render cycle, or false if it should not.
+        
+        // This is optimization, if persons has not changed this component doesn't need to re-render.
+        if (nextProps.persons !== this.props.persons) {
+            return true;
+        } else {
+            return false;
+        }
     }
 
     getSnapshotBeforeUpdate(prevProps, prevState) {
