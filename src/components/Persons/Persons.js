@@ -1,5 +1,6 @@
 import React, { PureComponent } from "react"; // PureComponent implements shouldComponentUpdate and checks all props whitch is what we want in most cases.
 import Person from "./Person/Person";
+import AuthContext from "../../context/auth-context";
 
 // React lifecycle diagram: http://projects.wojtekmaj.pl/react-lifecycle-methods-diagram/
 class Persons extends PureComponent {
