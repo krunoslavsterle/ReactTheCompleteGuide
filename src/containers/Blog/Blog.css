@@ -1,6 +1,5 @@
 .Blog ul {
   list-style: none;
-  margin: 0;
   padding: 0;
   width: 100%;
   text-align: center;
@@ -17,6 +16,7 @@
 }
 
 .Blog a:hover,
-.Blog a:active {
-  color: #fa92;
+.Blog a:active,
+.Blog a.active {
+  color: #fa9285;
 }
